@@ -160,7 +160,7 @@
         "documentation": {}
     },
     {
-        "label": "WeatherGrid",
+        "label": "BoundingBox",
         "importPath": "app.domain.entities",
         "description": "app.domain.entities",
         "isExtraImport": true,
@@ -177,6 +177,14 @@
     },
     {
         "label": "WrfMeta",
+        "importPath": "app.domain.entities",
+        "description": "app.domain.entities",
+        "isExtraImport": true,
+        "detail": "app.domain.entities",
+        "documentation": {}
+    },
+    {
+        "label": "WeatherGrid",
         "importPath": "app.domain.entities",
         "description": "app.domain.entities",
         "isExtraImport": true,
@@ -232,14 +240,6 @@
         "documentation": {}
     },
     {
-        "label": "DataSourceError",
-        "importPath": "app.domain.exceptions",
-        "description": "app.domain.exceptions",
-        "isExtraImport": true,
-        "detail": "app.domain.exceptions",
-        "documentation": {}
-    },
-    {
         "label": "TimeNotFoundError",
         "importPath": "app.domain.exceptions",
         "description": "app.domain.exceptions",
@@ -249,6 +249,30 @@
     },
     {
         "label": "VariableNotFoundError",
+        "importPath": "app.domain.exceptions",
+        "description": "app.domain.exceptions",
+        "isExtraImport": true,
+        "detail": "app.domain.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "DataSourceError",
+        "importPath": "app.domain.exceptions",
+        "description": "app.domain.exceptions",
+        "isExtraImport": true,
+        "detail": "app.domain.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "DataSourceError",
+        "importPath": "app.domain.exceptions",
+        "description": "app.domain.exceptions",
+        "isExtraImport": true,
+        "detail": "app.domain.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "DataSourceError",
         "importPath": "app.domain.exceptions",
         "description": "app.domain.exceptions",
         "isExtraImport": true,
@@ -317,6 +341,14 @@
         "description": "dataclasses",
         "isExtraImport": true,
         "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -489,7 +521,7 @@
         "documentation": {}
     },
     {
-        "label": "WeatherRenderer",
+        "label": "WrfDataReader",
         "importPath": "app.domain.interfaces",
         "description": "app.domain.interfaces",
         "isExtraImport": true,
@@ -497,7 +529,7 @@
         "documentation": {}
     },
     {
-        "label": "WrfDataReader",
+        "label": "WeatherRenderer",
         "importPath": "app.domain.interfaces",
         "description": "app.domain.interfaces",
         "isExtraImport": true,
@@ -602,12 +634,125 @@
         "documentation": {}
     },
     {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
         "label": "xarray",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "xarray",
         "description": "xarray",
         "detail": "xarray",
+        "documentation": {}
+    },
+    {
+        "label": "DatasetLoader",
+        "importPath": "app.infrastructure.adapters.dataset_loader",
+        "description": "app.infrastructure.adapters.dataset_loader",
+        "isExtraImport": true,
+        "detail": "app.infrastructure.adapters.dataset_loader",
+        "documentation": {}
+    },
+    {
+        "label": "GridDatasetLoader",
+        "importPath": "app.infrastructure.adapters.dataset_loader",
+        "description": "app.infrastructure.adapters.dataset_loader",
+        "isExtraImport": true,
+        "detail": "app.infrastructure.adapters.dataset_loader",
+        "documentation": {}
+    },
+    {
+        "label": "WrfDatasetLoader",
+        "importPath": "app.infrastructure.adapters.dataset_loader",
+        "description": "app.infrastructure.adapters.dataset_loader",
+        "isExtraImport": true,
+        "detail": "app.infrastructure.adapters.dataset_loader",
+        "documentation": {}
+    },
+    {
+        "label": "Final",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Final",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "Final",
+        "importPath": "typing_extensions",
+        "description": "typing_extensions",
+        "isExtraImport": true,
+        "detail": "typing_extensions",
+        "documentation": {}
+    },
+    {
+        "label": "Final",
+        "importPath": "typing_extensions",
+        "description": "typing_extensions",
+        "isExtraImport": true,
+        "detail": "typing_extensions",
+        "documentation": {}
+    },
+    {
+        "label": "time_parser",
+        "importPath": "app.infrastructure.adapters.wrf_reader",
+        "description": "app.infrastructure.adapters.wrf_reader",
+        "isExtraImport": true,
+        "detail": "app.infrastructure.adapters.wrf_reader",
+        "documentation": {}
+    },
+    {
+        "label": "WrfReaderAdapter",
+        "importPath": "app.infrastructure.adapters.wrf_reader",
+        "description": "app.infrastructure.adapters.wrf_reader",
+        "isExtraImport": true,
+        "detail": "app.infrastructure.adapters.wrf_reader",
+        "documentation": {}
+    },
+    {
+        "label": "suppress",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "asynccontextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
         "documentation": {}
     },
     {
@@ -675,24 +820,6 @@
         "description": "app.infrastructure.config.settings",
         "isExtraImport": true,
         "detail": "app.infrastructure.config.settings",
-        "documentation": {}
-    },
-    {
-        "label": "glob",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "glob",
-        "description": "glob",
-        "detail": "glob",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
         "documentation": {}
     },
     {
@@ -854,14 +981,6 @@
         "description": "app.infrastructure.adapters.matplotlib_renderer",
         "isExtraImport": true,
         "detail": "app.infrastructure.adapters.matplotlib_renderer",
-        "documentation": {}
-    },
-    {
-        "label": "WrfReaderAdapter",
-        "importPath": "app.infrastructure.adapters.wrf_reader",
-        "description": "app.infrastructure.adapters.wrf_reader",
-        "isExtraImport": true,
-        "detail": "app.infrastructure.adapters.wrf_reader",
         "documentation": {}
     },
     {
@@ -1185,14 +1304,6 @@
         "documentation": {}
     },
     {
-        "label": "asynccontextmanager",
-        "importPath": "contextlib",
-        "description": "contextlib",
-        "isExtraImport": true,
-        "detail": "contextlib",
-        "documentation": {}
-    },
-    {
         "label": "CORSMiddleware",
         "importPath": "fastapi.middleware.cors",
         "description": "fastapi.middleware.cors",
@@ -1494,6 +1605,96 @@
         "documentation": {}
     },
     {
+        "label": "GribReaderAdapter",
+        "kind": 6,
+        "importPath": "app.infrastructure.adapters.grib_reader.adapter",
+        "description": "app.infrastructure.adapters.grib_reader.adapter",
+        "peekOfCode": "class GribReaderAdapter(WeatherDataReader):\n    def __init__(self, path: Path) -> None:\n        self._loader: DatasetLoader = GridDatasetLoader(path)\n    def read(self, variable: str, time: datetime, bbox: BoundingBox) -> WeatherGrid:\n        da = _first_variable(self._loader.get())\n        da = time_selector.select(da, time)\n        da = bbox_clipper.clip(da, bbox)\n        return WeatherGrid(\n            lats=da.latitude.values,\n            lons=da.longitude.values,",
+        "detail": "app.infrastructure.adapters.grib_reader.adapter",
+        "documentation": {}
+    },
+    {
+        "label": "clip",
+        "kind": 2,
+        "importPath": "app.infrastructure.adapters.grib_reader.bbox_clipper",
+        "description": "app.infrastructure.adapters.grib_reader.bbox_clipper",
+        "peekOfCode": "def clip(da: xr.DataArray, bbox: BoundingBox) -> xr.DataArray:\n    return da.sel(\n        latitude=_ordered_slice(da.latitude, bbox.lat_min, bbox.lat_max),\n        longitude=_ordered_slice(da.longitude, bbox.lon_min, bbox.lon_max),\n    )\ndef _ordered_slice(coord: xr.DataArray, lo: float, hi: float) -> slice:\n    return slice(lo, hi) if coord[0] < coord[-1] else slice(hi, lo)",
+        "detail": "app.infrastructure.adapters.grib_reader.bbox_clipper",
+        "documentation": {}
+    },
+    {
+        "label": "select",
+        "kind": 2,
+        "importPath": "app.infrastructure.adapters.grib_reader.time_selector",
+        "description": "app.infrastructure.adapters.grib_reader.time_selector",
+        "peekOfCode": "def select(da: xr.Dataset, target: datetime) -> xr.DataArray:\n    dim = _find_time_dim(da)\n    if dim is None:\n        return da\n    t64 = np.datetime64(target.replace(tzinfo=None), \"ns\")\n    try:\n        return da.sel({dim: t64}, method=\"nearest\")\n    except:\n        available_times = _to_datetimes(da.coords[dim].values)\n        shown = available_times[:10]",
+        "detail": "app.infrastructure.adapters.grib_reader.time_selector",
+        "documentation": {}
+    },
+    {
+        "label": "available",
+        "kind": 2,
+        "importPath": "app.infrastructure.adapters.grib_reader.time_selector",
+        "description": "app.infrastructure.adapters.grib_reader.time_selector",
+        "peekOfCode": "def available(ds: xr.Dataset) -> list[datetime]:\n    coord = _find_time_coords(ds)\n    if coord is None:\n        return []\n    return _to_datetimes(ds.coords[coord].values)",
+        "detail": "app.infrastructure.adapters.grib_reader.time_selector",
+        "documentation": {}
+    },
+    {
+        "label": "WrfReaderAdapter",
+        "kind": 6,
+        "importPath": "app.infrastructure.adapters.wrf_reader.adapter",
+        "description": "app.infrastructure.adapters.wrf_reader.adapter",
+        "peekOfCode": "class WrfReaderAdapter(WrfDataReader):\n    def __init__(self, wrf_dir: str) -> None:\n        self._locator = WrfFileLocator(wrf_dir)\n    def read_variable(self, wrf_variable: str, time: str | None) -> WeatherGrid:\n        path = self._locator.resolve(time)\n        ds = self._load(path)\n        values = self._extract_values(ds, wrf_variable, path)\n        lats, lons = coord_extractor.extract(ds)\n        return WeatherGrid(\n            lats=lats,",
+        "detail": "app.infrastructure.adapters.wrf_reader.adapter",
+        "documentation": {}
+    },
+    {
+        "label": "_WRFOUT_PREFIX",
+        "kind": 5,
+        "importPath": "app.infrastructure.adapters.wrf_reader.adapter",
+        "description": "app.infrastructure.adapters.wrf_reader.adapter",
+        "peekOfCode": "_WRFOUT_PREFIX = \"wrfout_d01_\"\nclass WrfReaderAdapter(WrfDataReader):\n    def __init__(self, wrf_dir: str) -> None:\n        self._locator = WrfFileLocator(wrf_dir)\n    def read_variable(self, wrf_variable: str, time: str | None) -> WeatherGrid:\n        path = self._locator.resolve(time)\n        ds = self._load(path)\n        values = self._extract_values(ds, wrf_variable, path)\n        lats, lons = coord_extractor.extract(ds)\n        return WeatherGrid(",
+        "detail": "app.infrastructure.adapters.wrf_reader.adapter",
+        "documentation": {}
+    },
+    {
+        "label": "extract",
+        "kind": 2,
+        "importPath": "app.infrastructure.adapters.wrf_reader.coord_extractor",
+        "description": "app.infrastructure.adapters.wrf_reader.coord_extractor",
+        "peekOfCode": "def extract(ds: xr.Dataset) -> tuple[np.ndarray, np.ndarray]:\n    if any(coord not in ds for coord in _REQUIRED_COORDS):\n        raise DataSourceError(\"XLAT/XLONG not found in wrfout file\")\n    lats, lons = ds[\"XLAT\"].values, ds[\"XLONG\"].values\n    lats = lats[0] if lats.ndim == 3 else lats\n    lons = lons[0] if lons.ndim == 3 else lons\n    return lats, lons",
+        "detail": "app.infrastructure.adapters.wrf_reader.coord_extractor",
+        "documentation": {}
+    },
+    {
+        "label": "WrfFileLocator",
+        "kind": 6,
+        "importPath": "app.infrastructure.adapters.wrf_reader.file_locator",
+        "description": "app.infrastructure.adapters.wrf_reader.file_locator",
+        "peekOfCode": "class WrfFileLocator:\n    def __init__(self, wrf_dir: Path) -> None:\n        self._wrf_dir = wrf_dir\n    def list_sorted(self) -> list[Path]:\n        files = sorted(self._wrf_dir.glob(_WRFOUT_GLOB))\n        if not files:\n            raise DataSourceError(f\"No wrfout files found in '{self._wrf_dir}'\")\n        return files\n    def resolve(self, time: str | None) -> Path:\n        \"\"\"Return the path for *time*, or the latest file when *time* is None.\"\"\"",
+        "detail": "app.infrastructure.adapters.wrf_reader.file_locator",
+        "documentation": {}
+    },
+    {
+        "label": "to_filename_token",
+        "kind": 2,
+        "importPath": "app.infrastructure.adapters.wrf_reader.time_parser",
+        "description": "app.infrastructure.adapters.wrf_reader.time_parser",
+        "peekOfCode": "def to_filename_token(time_str: str) -> str:\n    \"\"\"Normalize any accepted format to canonical YYYY-MM-DD_HHMMSS.\"\"\"\n    dt = _parse_or_raise(time_str)\n    return dt.strftime(\"%Y-%m-%d_%H%M%S\")\ndef to_datetime(time_str: str) -> datetime:\n    \"\"\"Parse WRF time string into datetime.\"\"\"\n    return _parse_or_raise(time_str)\ndef _try_parse(time_str: str) -> datetime | None:\n    for fmt in _WRF_TIME_FORMATS:\n        with suppress(ValueError):",
+        "detail": "app.infrastructure.adapters.wrf_reader.time_parser",
+        "documentation": {}
+    },
+    {
+        "label": "to_datetime",
+        "kind": 2,
+        "importPath": "app.infrastructure.adapters.wrf_reader.time_parser",
+        "description": "app.infrastructure.adapters.wrf_reader.time_parser",
+        "peekOfCode": "def to_datetime(time_str: str) -> datetime:\n    \"\"\"Parse WRF time string into datetime.\"\"\"\n    return _parse_or_raise(time_str)\ndef _try_parse(time_str: str) -> datetime | None:\n    for fmt in _WRF_TIME_FORMATS:\n        with suppress(ValueError):\n            return datetime.strptime(time_str, fmt)\n    return None\ndef _parse_or_raise(time_str: str) -> datetime:\n    dt = _try_parse(time_str)",
+        "detail": "app.infrastructure.adapters.wrf_reader.time_parser",
+        "documentation": {}
+    },
+    {
         "label": "DatasetLoader",
         "kind": 6,
         "importPath": "app.infrastructure.adapters.dataset_loader",
@@ -1530,24 +1731,6 @@
         "documentation": {}
     },
     {
-        "label": "GribReaderAdapter",
-        "kind": 6,
-        "importPath": "app.infrastructure.adapters.grib_reader",
-        "description": "app.infrastructure.adapters.grib_reader",
-        "peekOfCode": "class GribReaderAdapter(WeatherDataReader):\n    \"\"\"Reads a single GRIB file and exposes it via the WeatherDataReader port.\"\"\"\n    def __init__(self, path: Path) -> None:\n        if not path.exists():\n            raise DataSourceError(f\"GRIB file not found: {path}\")\n        if path.suffix.lower() not in {\".grib\", \".grb\", \".grib2\", \".grb2\"}:\n            raise DataSourceError(f\"Not a recognised GRIB extension: {path}\")\n        self._path = path\n        self._ds: xr.Dataset | None = None\n    # ------------------------------------------------------------------",
-        "detail": "app.infrastructure.adapters.grib_reader",
-        "documentation": {}
-    },
-    {
-        "label": "_TIME_COORD_CANDIDATES",
-        "kind": 5,
-        "importPath": "app.infrastructure.adapters.grib_reader",
-        "description": "app.infrastructure.adapters.grib_reader",
-        "peekOfCode": "_TIME_COORD_CANDIDATES = (\"time\", \"valid_time\")\nclass GribReaderAdapter(WeatherDataReader):\n    \"\"\"Reads a single GRIB file and exposes it via the WeatherDataReader port.\"\"\"\n    def __init__(self, path: Path) -> None:\n        if not path.exists():\n            raise DataSourceError(f\"GRIB file not found: {path}\")\n        if path.suffix.lower() not in {\".grib\", \".grb\", \".grib2\", \".grb2\"}:\n            raise DataSourceError(f\"Not a recognised GRIB extension: {path}\")\n        self._path = path\n        self._ds: xr.Dataset | None = None",
-        "detail": "app.infrastructure.adapters.grib_reader",
-        "documentation": {}
-    },
-    {
         "label": "tha",
         "kind": 6,
         "importPath": "app.infrastructure.adapters.matplotlib_renderer",
@@ -1561,26 +1744,8 @@
         "kind": 6,
         "importPath": "app.infrastructure.adapters.matplotlib_renderer",
         "description": "app.infrastructure.adapters.matplotlib_renderer",
-        "peekOfCode": "class MatplotlibRenderer(WeatherRenderer):\n    \"\"\"Renders WeatherGrid objects into PNG bytes using matplotlib.\"\"\"\n    def render_png(self, grid: WeatherGrid) -> bytes:\n        try:\n            spec = get_variable_spec(grid.variable)\n            cmap = spec.colormap\n            unit_label = spec.unit_label\n        except VariableNotFoundError:\n            # WRF variables aren't in the registry; fall back gracefully\n            cmap = \"plasma\"",
+        "peekOfCode": "class MatplotlibRenderer(WeatherRenderer):\n    \"\"\"Renders WeatherGrid objects into PNG bytes using matplotlib.\"\"\"\n    def render_png(self, grid: WeatherGrid) -> bytes:\n        try:\n            spec = get_variable_spec(grid.variable)\n            cmap = spec.colormap\n            unit_label = spec.unit_label\n        except VariableNotFoundError:\n            cmap = \"plasma\"\n            unit_label = grid.variable",
         "detail": "app.infrastructure.adapters.matplotlib_renderer",
-        "documentation": {}
-    },
-    {
-        "label": "WrfReaderAdapter",
-        "kind": 6,
-        "importPath": "app.infrastructure.adapters.wrf_reader",
-        "description": "app.infrastructure.adapters.wrf_reader",
-        "peekOfCode": "class WrfReaderAdapter(WrfDataReader):\n    def __init__(self, wrf_dir: str) -> None:\n        self._wrf_dir = wrf_dir\n    def read_variable(self, wrf_variable: str, time: str | None) -> WeatherGrid:\n        path = self._resolve_path(time)\n        ds = self._open(path)\n        if wrf_variable not in ds:\n            raise VariableNotFoundError(\n                f\"Variable '{wrf_variable}' not found in '{os.path.basename(path)}'. \"\n                f\"Available: {list(ds.data_vars)}\"",
-        "detail": "app.infrastructure.adapters.wrf_reader",
-        "documentation": {}
-    },
-    {
-        "label": "_WRFOUT_GLOB",
-        "kind": 5,
-        "importPath": "app.infrastructure.adapters.wrf_reader",
-        "description": "app.infrastructure.adapters.wrf_reader",
-        "peekOfCode": "_WRFOUT_GLOB = \"wrfout_d01_*\"\nclass WrfReaderAdapter(WrfDataReader):\n    def __init__(self, wrf_dir: str) -> None:\n        self._wrf_dir = wrf_dir\n    def read_variable(self, wrf_variable: str, time: str | None) -> WeatherGrid:\n        path = self._resolve_path(time)\n        ds = self._open(path)\n        if wrf_variable not in ds:\n            raise VariableNotFoundError(\n                f\"Variable '{wrf_variable}' not found in '{os.path.basename(path)}'. \"",
-        "detail": "app.infrastructure.adapters.wrf_reader",
         "documentation": {}
     },
     {

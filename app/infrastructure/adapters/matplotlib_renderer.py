@@ -32,26 +32,31 @@ class MatplotlibRenderer(WeatherRenderer):
             cmap = spec.colormap
             unit_label = spec.unit_label
         except VariableNotFoundError:
-            # WRF variables aren't in the registry; fall back gracefully
             cmap = "plasma"
             unit_label = grid.variable
 
         settings = get_settings()
+        lats, lons = grid.lats, grid.lons
+        
+        # Копируем массив, чтобы не менять исходные данные объекта
+        values = np.copy(grid.values)
 
-        lats, lons, values = grid.lats, grid.lons, grid.values
+        # Конвертация температуры из Кельвинов в Цельсии
+        var_name = grid.variable.upper()
+        if var_name in ("T2", "TEMP", "TC") or unit_label == "K":
+            values = values - 273.15
+            unit_label = "°C"
 
         # Build 2-D coordinate grids if inputs are 1-D (GRIB path)
         if lats.ndim == 1 and lons.ndim == 1:
             lon_grid, lat_grid = np.meshgrid(lons, lats)
         else:
-            # WRF provides 2-D XLAT/XLONG
             lat_grid = lats
             lon_grid = lons
 
         fig, ax = plt.subplots(figsize=(10, 6))
 
         if lats.ndim == 1:
-            # Filled contour for structured GRIB grids
             cf = ax.contourf(lon_grid, lat_grid, values, levels=20, cmap=cmap)
             ax.contour(
                 lon_grid, lat_grid, values,
@@ -60,10 +65,21 @@ class MatplotlibRenderer(WeatherRenderer):
             ax.set_xlim(settings.REGION_LON_MIN, settings.REGION_LON_MAX)
             ax.set_ylim(settings.REGION_LAT_MIN, settings.REGION_LAT_MAX)
         else:
-            # imshow for WRF irregular grids
-            cf = ax.imshow(
-                values, cmap=cmap, aspect="auto", origin="lower",
+            vmin, vmax = np.min(values), np.max(values)
+            
+            # Approximate proper aspect ratio for mid-latitudes
+            mean_lat = np.mean(lat_grid)
+            ax.set_aspect(1.0 / np.cos(np.radians(mean_lat)))
+            
+            # Smooth continuous gradient
+            levels = np.linspace(vmin, vmax, 100)
+            cf = ax.contourf(
+                lon_grid, lat_grid, values, 
+                levels=levels, cmap=cmap, extend="both", antialiased=True
             )
+
+            ax.set_xlim(np.min(lon_grid), np.max(lon_grid))
+            ax.set_ylim(np.min(lat_grid), np.max(lat_grid))
 
         cbar = fig.colorbar(cf, ax=ax, pad=0.02)
         cbar.set_label(unit_label, fontsize=11)
@@ -79,7 +95,8 @@ class MatplotlibRenderer(WeatherRenderer):
         plt.tight_layout()
 
         buf = io.BytesIO()
-        fig.savefig(buf, format="png", dpi=120)
+        fig.savefig(buf, format="png", dpi=300, bbox_inches="tight")
         plt.close(fig)
         buf.seek(0)
+        
         return buf.read()
