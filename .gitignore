@@ -217,3 +217,5 @@ __marimo__/
 
 *.db
 data/wrf
+data/temperature.grib.*
+data/pressure.grib.*
