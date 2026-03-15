@@ -14,6 +14,7 @@ dependency-injector or punq without touching any other layer.
 """
 
 from app.domain.entities import BoundingBox
+from app.domain.interfaces import DataCache, WeatherDataReader, WeatherRenderer
 from app.infrastructure.adapters.grib_reader import GribReaderAdapter
 from app.infrastructure.adapters.matplotlib_renderer import MatplotlibRenderer
 from app.infrastructure.adapters.wrf_reader import WrfReaderAdapter
@@ -31,14 +32,14 @@ class Container:
         self._settings = settings
 
         # Shared cache — lives for the process lifetime
-        self.cache = InMemoryLRUCache(max_size=256)
+        self.cache: DataCache = InMemoryLRUCache(max_size=256)
 
         # Renderer — stateless, safe to share
-        self.renderer = MatplotlibRenderer()
+        self.renderer: WeatherRenderer = MatplotlibRenderer()
 
         # GRIB readers — open the dataset once and cache on the instance
-        self.temperature_reader = GribReaderAdapter(settings.TEMPERATURE_GRIB)
-        self.pressure_reader = GribReaderAdapter(settings.PRESSURE_GRIB)
+        self.temperature_reader: WeatherDataReader = GribReaderAdapter(settings.TEMPERATURE_GRIB)
+        self.pressure_reader: WeatherDataReader = GribReaderAdapter(settings.PRESSURE_GRIB)
 
         # WRF reader
         self.wrf_reader = WrfReaderAdapter(settings.WRF_DIR)

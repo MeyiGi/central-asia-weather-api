@@ -56,6 +56,22 @@
         "documentation": {}
     },
     {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
         "label": "VariableSpec",
         "importPath": "app.domain.entities",
         "description": "app.domain.entities",
@@ -201,6 +217,14 @@
     },
     {
         "label": "VariableNotFoundError",
+        "importPath": "app.domain.exceptions",
+        "description": "app.domain.exceptions",
+        "isExtraImport": true,
+        "detail": "app.domain.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "DataSourceError",
         "importPath": "app.domain.exceptions",
         "description": "app.domain.exceptions",
         "isExtraImport": true,
@@ -497,6 +521,30 @@
         "documentation": {}
     },
     {
+        "label": "DataCache",
+        "importPath": "app.domain.interfaces",
+        "description": "app.domain.interfaces",
+        "isExtraImport": true,
+        "detail": "app.domain.interfaces",
+        "documentation": {}
+    },
+    {
+        "label": "WeatherDataReader",
+        "importPath": "app.domain.interfaces",
+        "description": "app.domain.interfaces",
+        "isExtraImport": true,
+        "detail": "app.domain.interfaces",
+        "documentation": {}
+    },
+    {
+        "label": "WeatherRenderer",
+        "importPath": "app.domain.interfaces",
+        "description": "app.domain.interfaces",
+        "isExtraImport": true,
+        "detail": "app.domain.interfaces",
+        "documentation": {}
+    },
+    {
         "label": "get_variable_spec",
         "importPath": "app.domain.variable_registry",
         "description": "app.domain.variable_registry",
@@ -527,6 +575,14 @@
         "importPath": "numpy",
         "description": "numpy",
         "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -1438,6 +1494,42 @@
         "documentation": {}
     },
     {
+        "label": "DatasetLoader",
+        "kind": 6,
+        "importPath": "app.infrastructure.adapters.dataset_loader",
+        "description": "app.infrastructure.adapters.dataset_loader",
+        "peekOfCode": "class DatasetLoader(ABC):\n    \"\"\"\n    Opens a file as an xr.Dataset and caches the result.\n    Subclasses implement _validate() to reject wrong file types early,\n    and _open() to pick the right xarray engine and wrap I/O errors.\n    \"\"\"\n    def __init__(self, path: Path) -> None:\n        self._path = self._validate(path)\n        self._ds: xr.Dataset | None = None\n    def get(self) -> xr.Dataset:",
+        "detail": "app.infrastructure.adapters.dataset_loader",
+        "documentation": {}
+    },
+    {
+        "label": "GridDatasetLoader",
+        "kind": 6,
+        "importPath": "app.infrastructure.adapters.dataset_loader",
+        "description": "app.infrastructure.adapters.dataset_loader",
+        "peekOfCode": "class GridDatasetLoader(DatasetLoader):\n    \"\"\"\n    Opens a GRIB file using the cfgrib engine.\n    decode_timedelta=False keeps time offsets as raw integers rather than\n    converting them to timedeltas, which avoids ambiguity when the file\n    mixes forecast steps and valid times.\n    \"\"\"\n    def _validate(self, path: Path) -> Path:\n        self._assert_exists(path)\n        if path.suffix.lower() not in GRID_EXTENSIONS:",
+        "detail": "app.infrastructure.adapters.dataset_loader",
+        "documentation": {}
+    },
+    {
+        "label": "WrfDatasetLoader",
+        "kind": 6,
+        "importPath": "app.infrastructure.adapters.dataset_loader",
+        "description": "app.infrastructure.adapters.dataset_loader",
+        "peekOfCode": "class WrfDatasetLoader(DatasetLoader):\n    \"\"\"\n    Opens a WRF NetCDF output file using the default xarray engine.\n    WRF files have no special extension — validation only checks existence.\n    The caller (WrfFileLocator) is responsible for ensuring the path\n    points to an actual wrfout file.\n    \"\"\"\n    def _validate(self, path: Path) -> Path:\n        self._assert_exists(path)\n        return path",
+        "detail": "app.infrastructure.adapters.dataset_loader",
+        "documentation": {}
+    },
+    {
+        "label": "GRID_EXTENSIONS",
+        "kind": 5,
+        "importPath": "app.infrastructure.adapters.dataset_loader",
+        "description": "app.infrastructure.adapters.dataset_loader",
+        "peekOfCode": "GRID_EXTENSIONS = {\".grib\", \".grb\", \".grib2\", \".grb2\"}\nclass DatasetLoader(ABC):\n    \"\"\"\n    Opens a file as an xr.Dataset and caches the result.\n    Subclasses implement _validate() to reject wrong file types early,\n    and _open() to pick the right xarray engine and wrap I/O errors.\n    \"\"\"\n    def __init__(self, path: Path) -> None:\n        self._path = self._validate(path)\n        self._ds: xr.Dataset | None = None",
+        "detail": "app.infrastructure.adapters.dataset_loader",
+        "documentation": {}
+    },
+    {
         "label": "GribReaderAdapter",
         "kind": 6,
         "importPath": "app.infrastructure.adapters.grib_reader",
@@ -1595,7 +1687,7 @@
         "kind": 6,
         "importPath": "app.infrastructure.container",
         "description": "app.infrastructure.container",
-        "peekOfCode": "class Container:\n    \"\"\"\n    Holds application-lifetime singletons.\n    Instantiated once in main.py and stored on app.state.\n    \"\"\"\n    def __init__(self, settings: Settings) -> None:\n        self._settings = settings\n        # Shared cache — lives for the process lifetime\n        self.cache = InMemoryLRUCache(max_size=256)\n        # Renderer — stateless, safe to share",
+        "peekOfCode": "class Container:\n    \"\"\"\n    Holds application-lifetime singletons.\n    Instantiated once in main.py and stored on app.state.\n    \"\"\"\n    def __init__(self, settings: Settings) -> None:\n        self._settings = settings\n        # Shared cache — lives for the process lifetime\n        self.cache: DataCache = InMemoryLRUCache(max_size=256)\n        # Renderer — stateless, safe to share",
         "detail": "app.infrastructure.container",
         "documentation": {}
     },
