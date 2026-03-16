@@ -219,4 +219,4 @@ __marimo__/
 data/wrf
 data/*.grib.*
 
-.vscode/
+.vscode

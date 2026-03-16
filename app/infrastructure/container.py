@@ -20,6 +20,7 @@ from app.infrastructure.adapters.matplotlib_renderer import MatplotlibRenderer
 from app.infrastructure.adapters.wrf_reader import WrfReaderAdapter
 from app.infrastructure.cache.in_memory_cache import InMemoryLRUCache
 from app.infrastructure.config.settings import Settings, get_settings
+from app.infrastructure.adapters.wrf_reader.strategies import register_all_strategies
 
 
 class Container:
@@ -45,6 +46,7 @@ class Container:
         self.wind_v_reader:       WeatherDataReader = GribReaderAdapter(settings.WIND_V_GRIB)
 
         # WRF reader
+        register_all_strategies()
         self.wrf_reader = WrfReaderAdapter(settings.WRF_DIR)
 
         # Region bounding box
@@ -55,10 +57,8 @@ class Container:
             lon_max=settings.REGION_LON_MAX,
         )
 
-    # ------------------------------------------------------------------
     # Reader look-up — maps variable name → reader instance
     # Used by the generic /weather/{variable} router.
-    # ------------------------------------------------------------------
 
     def get_reader_for_variable(self, variable: str) -> GribReaderAdapter:
         mapping = {
