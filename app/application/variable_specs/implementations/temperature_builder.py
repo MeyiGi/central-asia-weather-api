@@ -1,6 +1,8 @@
 from app.application.variable_specs.builder import VariableSpecBuilder
+from app.application.variable_specs.registry import register_builder
 
 
+@register_builder("temperature")
 class TemperatureBuilder(VariableSpecBuilder):
     def build_name(self) -> None:
         self._name = "temperature"

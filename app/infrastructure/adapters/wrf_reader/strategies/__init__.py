@@ -5,7 +5,7 @@ Importing this package registers all built-in virtual-variable strategies.
 To add a new one, create a module here and import it below — nothing else changes.
 """
  
-def register_all_strategies() -> None:
+def register_all_wrf_reading_strategies() -> None:
     """Trigger registration of all built-in variable strategies.
  
     Importing the modules above fires the @register_strategy decorators.

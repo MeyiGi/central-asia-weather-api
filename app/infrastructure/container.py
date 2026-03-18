@@ -13,14 +13,16 @@ scale.  If the project grows, the container can be replaced with
 dependency-injector or punq without touching any other layer.
 """
 
+from app.application.variable_specs.implementations import register_all_variable_spec_builders
 from app.domain.entities import BoundingBox
 from app.domain.interfaces import DataCache, WeatherDataReader, WeatherRenderer
 from app.infrastructure.adapters.grib_reader import GribReaderAdapter
+from app.infrastructure.adapters.grib_reader.derived_wind import WindDirectionReader, WindSpeedReader
 from app.infrastructure.adapters.rendering import MatplotlibRenderer
 from app.infrastructure.adapters.wrf_reader import WrfReaderAdapter
 from app.infrastructure.cache.in_memory_cache import InMemoryLRUCache
 from app.infrastructure.config.settings import Settings, get_settings
-from app.infrastructure.adapters.wrf_reader.strategies import register_all_strategies
+from app.infrastructure.adapters.wrf_reader.strategies import register_all_wrf_reading_strategies
 
 
 class Container:
@@ -30,8 +32,9 @@ class Container:
     """
 
     def __init__(self, settings: Settings) -> None:
+        
         self._settings = settings
-
+        
         # Shared cache — lives for the process lifetime
         self.cache: DataCache = InMemoryLRUCache(max_size=256)
 
@@ -42,13 +45,16 @@ class Container:
         self.temperature_reader: WeatherDataReader = GribReaderAdapter(settings.TEMPERATURE_GRIB)
         self.pressure_reader: WeatherDataReader = GribReaderAdapter(settings.PRESSURE_GRIB)
         self.precipitation_reader: WeatherDataReader = GribReaderAdapter(settings.PRECIPITATION_GRIB)
-        self.wind_u_reader:       WeatherDataReader = GribReaderAdapter(settings.WIND_U_GRIB)
-        self.wind_v_reader:       WeatherDataReader = GribReaderAdapter(settings.WIND_V_GRIB)
+        self.wind_u_reader: WeatherDataReader = GribReaderAdapter(settings.WIND_U_GRIB)
+        self.wind_v_reader: WeatherDataReader = GribReaderAdapter(settings.WIND_V_GRIB)
+        self.wind_speed_reader: WeatherDataReader = WindSpeedReader(self.wind_u_reader, self.wind_v_reader)
+        self.wind_direction_reader: WeatherDataReader = WindDirectionReader(self.wind_u_reader, self.wind_v_reader)
         self.humidity_reader: WeatherDataReader = GribReaderAdapter(settings.HUMIDITY_GRIB)
 
         # WRF reader
-        register_all_strategies()
+        register_all_wrf_reading_strategies()
         self.wrf_reader = WrfReaderAdapter(settings.WRF_DIR)
+
 
         # Region bounding box
         self.bbox = BoundingBox(
@@ -65,10 +71,10 @@ class Container:
         mapping = {
             "temperature": self.temperature_reader,
             "pressure": self.pressure_reader,
-            "precipitation" : self.precipitation_reader,
-            "wind_speed":    self.wind_u_reader,
-            "wind_direction":self.wind_u_reader,
-            "humidity" : self.humidity_reader
+            "precipitation": self.precipitation_reader,
+            "wind_speed": self.wind_speed_reader,
+            "wind_direction": self.wind_direction_reader,
+            "humidity": self.humidity_reader,
         }
         reader = mapping.get(variable)
         if reader is None:

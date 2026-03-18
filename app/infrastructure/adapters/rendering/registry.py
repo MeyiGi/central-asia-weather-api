@@ -30,6 +30,20 @@ _RENDERER = {
             extend="max",
         )
     ),
+    "wind_speed": ScalarMetricStrategy(
+        ScalarRenderSpec(
+            title="Wind Speed",
+            unit_label="m/s",
+            cmap="YlOrRd",
+        )
+    ),
+    "wind_direction": ScalarMetricStrategy(
+        ScalarRenderSpec(
+            title="Wind Direction",
+            unit_label="°",
+            cmap="hsv",
+        )
+    ),
     "wind": WindStrategy(),
     "humidity": ScalarMetricStrategy(
         ScalarRenderSpec(

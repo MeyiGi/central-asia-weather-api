@@ -14,6 +14,7 @@ import logging
 from datetime import datetime
 
 from app.application.dtos import RenderMapQuery, RenderWindQuery, RequestLogEntry, WrfRenderQuery
+from app.application.variable_specs.implementations import register_all_variable_spec_builders
 from app.domain.entities import BoundingBox, RenderRequest, VariableSpec
 from app.domain.interfaces import (
     DataCache,
@@ -23,6 +24,9 @@ from app.domain.interfaces import (
     WrfDataReader,
 )
 from app.application.variable_specs.registry import get_variable_spec
+
+# registers all available variable spec builders
+register_all_variable_spec_builders()
 
 logger = logging.getLogger(__name__)
 
