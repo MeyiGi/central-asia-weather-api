@@ -32,7 +32,7 @@ class WrfFileLocator:
         normalized = time_parser.to_filename_token(time)
         path = self._wrf_dir / f"{_WRFOUT_PREFIX}{normalized}"
 
-        if not path.exists:
+        if not path.exists():
             raise DataSourceError(f"WRF output file not found: '{path}'")
 
         return path
